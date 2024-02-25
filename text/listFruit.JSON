@@ -1,0 +1,52 @@
+[
+  {
+      "id": 1,
+      "productName": "Apple",
+      "from": "USA",
+      "nutrients": ["Vitamin C", "Dietary Fiber"],
+      "quantity": 10,
+      "price": 0.5,
+      "isOrganic": true,
+      "description": "Sweet and crunchy"
+  },
+  {
+      "id": 2,
+      "productName": "Banana",
+      "from": "Ecuador",
+      "nutrients": ["Vitamin B6", "Vitamin C", "Potassium"],
+      "quantity": 15,
+      "price": 0.3,
+      "isOrganic": false,
+      "description": "Soft and sweet"
+  },
+  {
+      "id": 3,
+      "productName": "Orange",
+      "from": "Spain",
+      "nutrients": ["Vitamin C", "Fiber"],
+      "quantity": 20,
+      "price": 0.4,
+      "isOrganic": true,
+      "description": "Juicy and sweet"
+  },
+  {
+      "id": 4,
+      "productName": "Strawberry",
+      "from": "France",
+      "nutrients": ["Vitamin C", "Manganese"],
+      "quantity": 30,
+      "price": 0.6,
+      "isOrganic": false,
+      "description": "Sweet and sour"
+  },
+  {
+      "id": 5,
+      "productName": "Blueberry",
+      "from": "Canada",
+      "nutrients": ["Vitamin C", "Vitamin K"],
+      "quantity": 25,
+      "price": 0.7,
+      "isOrganic": true,
+      "description": "Sweet and juicy"
+  }
+]
