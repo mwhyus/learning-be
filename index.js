@@ -2,6 +2,8 @@ const fs = require('fs');
 const http = require('http')
 const url = require('url')
 
+const replaceTemplate = require('./modules/replaceTemplate')
+
 // // Blocking, synchronous way
 // const textIn = fs.readFileSync('./text/test.txt', 'utf8')
 // console.log(textIn);
@@ -30,23 +32,6 @@ const url = require('url')
 // console.log('Will read file!');
 
 // SERVER
-
-const replaceTemplate = (temp, items) => {
-  let output = temp.replace(/{%PRODUCTNAME%}/g, items.productName)
-  output = output.replace(/{%ID%}/g, (items.id - 1))
-  output = output.replace(/{%IMAGE%}/g, items.image)
-  output = output.replace(/{%PRICE%}/g, items.price)
-  output = output.replace(/{%FROM%}/g, items.from)
-  output = output.replace(/{%NUTRIENTS%}/g, items.nutrients)
-  output = output.replace(/{%QUANTITY%}/g, items.quantity)
-  output = output.replace(/{%ISORGANIC%}/g, items.isOrganic)
-  output = output.replace(/{%DESCRIPTION%}/g, items.description)
-
-  if (!items.isOrganic) output = output.replace(/{%NOT_ORGANIC%}/g, 'not-organic')
-
-  return output;
-};
-
 const tempOverview = fs.readFileSync(`${__dirname}/templates/template-overview.html`, 'utf-8');
 const tempCard = fs.readFileSync(`${__dirname}/templates/template-card.html`, 'utf-8');
 const tempProduct = fs.readFileSync(`${__dirname}/templates/template-product.html`, 'utf-8');
