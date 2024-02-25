@@ -3,6 +3,7 @@
       "id": 1,
       "productName": "Apple",
       "from": "USA",
+      "image": "🍎",
       "nutrients": ["Vitamin C", "Dietary Fiber"],
       "quantity": 10,
       "price": 0.5,
@@ -12,6 +13,7 @@
   {
       "id": 2,
       "productName": "Banana",
+      "image": "🍌",
       "from": "Ecuador",
       "nutrients": ["Vitamin B6", "Vitamin C", "Potassium"],
       "quantity": 15,
@@ -22,6 +24,7 @@
   {
       "id": 3,
       "productName": "Orange",
+      "image": "🍊",
       "from": "Spain",
       "nutrients": ["Vitamin C", "Fiber"],
       "quantity": 20,
@@ -32,6 +35,7 @@
   {
       "id": 4,
       "productName": "Strawberry",
+      "image": "🍓",
       "from": "France",
       "nutrients": ["Vitamin C", "Manganese"],
       "quantity": 30,
@@ -42,6 +46,7 @@
   {
       "id": 5,
       "productName": "Blueberry",
+      "image": "🫐",
       "from": "Canada",
       "nutrients": ["Vitamin C", "Vitamin K"],
       "quantity": 25,

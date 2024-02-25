@@ -31,26 +31,47 @@ const url = require('url')
 
 // SERVER
 
+const replaceTemplate = (tempCard, items) => {
+  let output = tempCard.replace(/{%PRODUCTNAME%}/g, items.productName)
+  output = output.replace(/{%ID%}/g, items.id)
+  output = output.replace(/{%IMAGE%}/g, items.image)
+  output = output.replace(/{%PRICE%}/g, items.price)
+  output = output.replace(/{%FROM%}/g, items.from)
+  output = output.replace(/{%NUTRIENTS%}/g, items.nutrients)
+  output = output.replace(/{%QUANTITY%}/g, items.quantity)
+  output = output.replace(/{%ISORGANIC%}/g, items.isOrganic)
+  output = output.replace(/{%DESCRIPTION%}/g, items.description)
+
+  if (!items.isOrganic) output = output.replace(/{%NOT_ORGANIC%}/g, 'not-organic')
+
+  return output;
+};
+
+const tempOverview = fs.readFileSync(`${__dirname}/templates/template-overview.html`, 'utf-8');
+const tempCard = fs.readFileSync(`${__dirname}/templates/template-card.html`, 'utf-8');
+const tempProduct = fs.readFileSync(`${__dirname}/templates/template-product.html`, 'utf-8');
+
 const data = fs.readFileSync(`${__dirname}/text/listFruit.json`, 'utf-8');
+const dataObj = JSON.parse(data);
 
 const server = http.createServer((req, res) => {
   const pathName = req.url;
   const pathUrl = ['/', '/overview'];
 
   if (pathUrl.includes(pathName)) {
-    return res.end('This is overview');
-  } if (pathName === '/product') {
-    return res.end('This is the product');
-  } if (pathName === '/api') {
-    res.writeHead(200, {
-      'Content-type': 'application/json'
-    });
+    res.writeHead(200, {'Content-type': 'text/html'});
+
+    const cardsHtml = dataObj.map(items => replaceTemplate(tempCard, items)).join('')
+    const output = tempOverview.replace('{%PRODUCT_CARDS}', cardsHtml)
+
+    res.end(output);
+  } else if (pathName === '/product') {
+    res.end('This is the product');
+  } else if (pathName === '/api') {
+    res.writeHead(200, { 'Content-type': 'application/json' });
     res.end(data);
   } else {
-    res.writeHead(404, {
-      'Content-type': 'text/html',
-      'my-own-header': 'hello-world'
-    });
+    res.writeHead(404, {'Content-type': 'text/html', 'my-own-header': 'hello-world'});
     res.end('<h1>Ga nemu gan</h1>');
   }
 });
